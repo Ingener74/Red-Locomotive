@@ -19,9 +19,13 @@
     </events>
     <!-- States -->
     <state name="RedLocomotive">
-        <transition event="Enter" nextState="Initial"/>
+        <transition event="Enter" nextState="Initial">
+            <action>vizerSM.DoEnter();</action>
+        </transition>
         <state name="Initial">
-            <transition event="Enter" nextState="Registration"/>
+            <transition event="Enter" nextState="Registration">
+                <action>vizerSM.DoRegistration();</action>
+            </transition>
         </state>
         <state name="Registration">
             <transition event="Register" nextState="Confirmation"/>
