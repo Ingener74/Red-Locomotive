@@ -14,9 +14,7 @@
             <event id="Confirm" name="ConfirmEN"/>
         </eventSource>
         <eventSource name="Protocol">
-            <event id="NewMessage" name="NewMessage">
-                <parameter name="Message" type="class"/>
-            </event>
+            <event id="NewMessage" name="NewMessage"/>
         </eventSource>
     </events>
     <!-- States -->

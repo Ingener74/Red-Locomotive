@@ -18,6 +18,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${SMSTDUTILS_INCLUDE_DIR}
                     )
 
-add_executable(${PROGRAM_NAME} main.cpp ${FSM_CPP} ${FSM_FILES})
+add_executable(${PROGRAM_NAME}
+    ${FSM_CPP} ${FSM_FILES} 
+    main.cpp
+    Vizer.cpp
+)
 
 target_link_libraries(${PROGRAM_NAME} ${SMSTDUTILS_LIBRARY})

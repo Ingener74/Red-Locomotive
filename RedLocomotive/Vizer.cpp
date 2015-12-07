@@ -9,7 +9,8 @@
 
 #include "Vizer.h"
 
-Vizer::Vizer(): context(new RedLocomotiveContext) {
+Vizer::Vizer() {
+    context.reset(new RedLocomotiveContext(*this));
 }
 
 Vizer::~Vizer() {
