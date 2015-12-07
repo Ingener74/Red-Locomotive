@@ -15,7 +15,7 @@
         </eventSource>
         <eventSource name="Protocol">
             <event id="NewMessage" name="NewMessage">
-                <parameter name="const&amp;" type="Message"/>
+                <parameter name="Message" type="class"/>
             </event>
         </eventSource>
     </events>
