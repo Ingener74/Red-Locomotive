@@ -1,0 +1,44 @@
+<sm:StateMachine xmlns:sm="http://www.stateforge.com/StateMachineCpp-v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.stateforge.com/StateMachineCpp-v1                                      http://www.stateforge.com/xsd/StateMachineCpp-v1.xsd">
+    <!-- general settings -->
+    <settings asynchronous="false" library="std">
+        <description>Samek fsm example</description>
+        <object instance="samek" class="Samek" include="Samek.h"/>
+    </settings>
+    <!-- events -->
+    <events>
+        <eventSource name="UI">
+            <event id="Enter"/>
+            <event id="ReturnToChatsContacts" name="ReturnToChatsContactsEN"/>
+            <event id="EnterDialog"/>
+            <event id="Register"/>
+            <event id="Confirm" name="ConfirmEN"/>
+        </eventSource>
+        <eventSource name="Protocol">
+            <event id="NewMessage" name="NewMessage">
+                <parameter name="const&amp;" type="Message"/>
+            </event>
+        </eventSource>
+    </events>
+    <!-- States -->
+    <state name="RedLocomotive">
+        <transition event="Enter" nextState="Initial"/>
+        <state name="Initial">
+            <transition event="Enter" nextState="Registration"/>
+        </state>
+        <state name="Registration">
+            <transition event="Register" nextState="Confirmation"/>
+        </state>
+        <state name="Confirmation">
+            <transition event="Confirm" nextState="Working"/>
+        </state>
+        <state name="Working">
+            <state name="ChatsContacts">
+                <transition event="EnterDialog" nextState="Messages"/>
+            </state>
+            <state name="Messages">
+                <transition event="ReturnToChatsContacts" nextState="ChatsContacts"/>
+            </state>
+        </state>
+        <state name="Background"/>
+    </state>
+</sm:StateMachine>
