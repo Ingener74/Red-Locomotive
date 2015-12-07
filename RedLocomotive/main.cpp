@@ -17,6 +17,11 @@ int main(int argc, char **argv) {
 
         Vizer v;
 
+        v.Enter();
+        v.Enter();
+
+        v.Register();
+
     } catch (exception const& e) {
         cerr << e.what() << endl;
     }

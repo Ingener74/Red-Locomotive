@@ -28,6 +28,19 @@ public:
     Vizer();
     virtual ~Vizer();
 
+    // UI's events
+    void Enter();
+    void ReturnToChatsContacts();
+    void EnterDialog();
+    void Register();
+    void Confirm();
+
+    // Protocol's events
+    void NewMessage();
+
+    void DoInitial();
+    void DoRegistration();
+
     std::unique_ptr<RedLocomotiveContext> context;
 };
 

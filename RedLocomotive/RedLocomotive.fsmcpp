@@ -7,7 +7,8 @@
     <!-- events -->
     <events>
         <eventSource name="UI">
-            <event id="Enter"/>
+            <event id="Enter" name="Enter"/>
+            <event id="Initial" name="Initial"/>
             <event id="ReturnToChatsContacts" name="ReturnToChatsContactsEN"/>
             <event id="EnterDialog"/>
             <event id="Register"/>
@@ -19,8 +20,8 @@
     </events>
     <!-- States -->
     <state name="RedLocomotive">
-        <transition event="Enter" nextState="Initial">
-            <action>vizerSM.DoEnter();</action>
+        <transition event="Initial" nextState="Initial">
+            <action>vizerSM.DoInitial();</action>
         </transition>
         <state name="Initial">
             <transition event="Enter" nextState="Registration">
