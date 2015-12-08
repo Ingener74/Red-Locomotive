@@ -23,9 +23,20 @@ public:
     std::string data;
 };
 
+class VizerView {
+public:
+    VizerView() = default;
+    virtual ~VizerView() = default;
+
+    virtual void DoInitial() = 0;
+    virtual void DoRegistration() = 0;
+    virtual void DoConfirmation() = 0;
+    virtual void DoWork() = 0;
+};
+
 class Vizer {
 public:
-    Vizer();
+    Vizer(VizerView*);
     virtual ~Vizer();
 
     // UI's events
@@ -38,10 +49,8 @@ public:
     // Protocol's events
     void NewMessage();
 
-    void DoInitial();
-    void DoRegistration();
-
-    std::unique_ptr<RedLocomotiveContext> context;
+    VizerView* m_view;
+    std::unique_ptr<RedLocomotiveContext> m_context;
 };
 
 #endif /* BUILD_REDLOCOMOTIVE_VIZER_H_ */

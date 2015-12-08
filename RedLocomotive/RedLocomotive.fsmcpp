@@ -2,7 +2,7 @@
     <!-- general settings -->
     <settings asynchronous="false" library="std">
         <description>Vizer test state machine</description>
-        <object instance="vizerSM" class="Vizer" include="Vizer.h"/>
+        <object instance="vizerView" class="VizerView" include="Vizer.h"/>
     </settings>
     <!-- events -->
     <events>
@@ -21,18 +21,22 @@
     <!-- States -->
     <state name="RedLocomotive">
         <transition event="Initial" nextState="Initial">
-            <action>vizerSM.DoInitial();</action>
+            <action>vizerView.DoInitial();</action>
         </transition>
         <state name="Initial">
             <transition event="Enter" nextState="Registration">
-                <action>vizerSM.DoRegistration();</action>
+                <action>vizerView.DoRegistration();</action>
             </transition>
         </state>
         <state name="Registration">
-            <transition event="Register" nextState="Confirmation"/>
+            <transition event="Register" nextState="Confirmation">
+                <action>vizerView.DoConfirmation()</action>
+            </transition>
         </state>
         <state name="Confirmation">
-            <transition event="Confirm" nextState="Working"/>
+            <transition event="Confirm" nextState="Working">
+                <action>vizerView.DoWork()</action>
+            </transition>
         </state>
         <state name="Working">
             <state name="ChatsContacts">

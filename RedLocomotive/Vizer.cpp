@@ -11,41 +11,34 @@
 
 using namespace std;
 
-Vizer::Vizer() {
-    context.reset(new RedLocomotiveContext(*this));
+Vizer::Vizer(VizerView* view) :
+    m_view(view) {
+    m_context.reset(new RedLocomotiveContext(*view));
 }
 
 Vizer::~Vizer() {
 }
 
 void Vizer::Enter() {
-    context->Enter();
+    m_context->Enter();
 }
 
 void Vizer::ReturnToChatsContacts() {
-    context->ReturnToChatsContacts();
+    m_context->ReturnToChatsContacts();
 }
 
 void Vizer::EnterDialog() {
-    context->EnterDialog();
+    m_context->EnterDialog();
 }
 
 void Vizer::Register() {
-    context->Register();
+    m_context->Register();
 }
 
 void Vizer::Confirm() {
-    context->Confirm();
+    m_context->Confirm();
 }
 
 void Vizer::NewMessage() {
-    context->NewMessage();
-}
-
-void Vizer::DoInitial() {
-    cout << __PRETTY_FUNCTION__ << endl;
-}
-
-void Vizer::DoRegistration() {
-    cout << __PRETTY_FUNCTION__ << endl;
+    m_context->NewMessage();
 }

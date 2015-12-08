@@ -11,16 +11,35 @@
 
 using namespace std;
 
+class View: public VizerView {
+public:
+    virtual void DoInitial() {
+        cout << __PRETTY_FUNCTION__ << endl;
+    }
+    virtual void DoRegistration() {
+        cout << __PRETTY_FUNCTION__ << endl;
+    }
+    virtual void DoConfirmation() {
+        cout << __PRETTY_FUNCTION__ << endl;
+    }
+    virtual void DoWork() {
+        cout << __PRETTY_FUNCTION__ << endl;
+    }
+};
+
 int main(int argc, char **argv) {
     try {
         cout << "Red Locomotive" << endl;
 
-        Vizer v;
+        View view;
 
-        v.Enter();
+        Vizer v(&view);
+
         v.Enter();
 
         v.Register();
+
+        v.Confirm();
 
     } catch (exception const& e) {
         cerr << e.what() << endl;
